@@ -57,6 +57,3 @@ public class FichaSteps {
         "Debe mostrar mensaje El tratamiento es obligatorio para guardar la ficha.");
   }
 }
-
-// mvn "-Dcucumber.filter.tags=@ficha" test
-// mvn "-Dcucumber.filter.tags=@reglas" test

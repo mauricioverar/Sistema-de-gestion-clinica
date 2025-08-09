@@ -40,5 +40,3 @@ LoginPage loginPage;
     Assertions.assertTrue(loginPage.obtenerError().contains("inválidas"), "Debe mostrar mensaje de credenciales inválidas");
   }
 }
-
-// mvn "-Dcucumber.filter.tags=@login" test
