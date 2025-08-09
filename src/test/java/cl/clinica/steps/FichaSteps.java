@@ -3,7 +3,6 @@ package cl.clinica.steps;
 import org.junit.jupiter.api.Assertions;
 
 import cl.clinica.pages.FichaPage;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -23,11 +22,6 @@ public class FichaSteps {
     fichaPage.fichaPage("Pedro Pablo", "dolor de cabeza", "33", "aspirina");
   }
 
-  @And("envía el formulario")
-  public void envia_el_formulario() {
-    fichaPage.enviarFormulario();
-  }
-
   @Then("ve un mensaje de confirmación de ficha registrada con éxito")
   public void ve_un_mensaje_de_confirmación_de_ficha_registrada_con_éxito() {
     fichaPage = new FichaPage();
@@ -35,19 +29,34 @@ public class FichaSteps {
         fichaPage.obtenerMensajeExitoso().contains("éxito"), "Debe mostrar mensaje Ficha registrada con éxito");
   }
 
-  @When("ingresa solo el nombre diagnóstico y edad")
-  public void ingresa_solo_el_nombre_diagnóstico_y_edad() {
+  // reglas
+
+  @When("ingresa una edad menor a 12 años")
+  public void ingresa_una_edad_menor_a_12_años() {
+    fichaPage = new FichaPage();
+    fichaPage.fichaPage("Pedro Pablo", "", "11", "aspirina");
+  }
+
+  @Then("ve un mensaje que indica que el diagnóstico debe ser Pediátrico")
+  public void ve_un_mensaje_que_indica_que_el_diagnóstico_debe_ser_Pediátrico() {
+    fichaPage = new FichaPage();
+    Assertions.assertTrue(
+        fichaPage.obtenerMensajeError().contains("Pediátrico"), "Debe mostrar mensaje Para menores de 12 años, el diagnóstico debe ser \"Pediátrico\".");
+  }
+
+  @When("deja el campo de tratamiento vacío")
+  public void deja_el_campo_de_tratamiento_vacío() {
     fichaPage = new FichaPage();
     fichaPage.fichaPage("Pedro Pablo", "dolor de cabeza", "33", "");
-    fichaPage.enviarFormulario();
   }
 
   @Then("ve un mensaje de error indicando que el tratamiento es obligatorio")
   public void ve_un_mensaje_de_error_indicando_que_el_tratamiento_es_obligatorio() {
     fichaPage = new FichaPage();
-    Assertions.assertTrue(fichaPage.obtenerError().contains("obligatorio "),
+    Assertions.assertTrue(fichaPage.obtenerMensajeError().contains("obligatorio "),
         "Debe mostrar mensaje El tratamiento es obligatorio para guardar la ficha.");
   }
 }
 
 // mvn "-Dcucumber.filter.tags=@ficha" test
+// mvn "-Dcucumber.filter.tags=@reglas" test

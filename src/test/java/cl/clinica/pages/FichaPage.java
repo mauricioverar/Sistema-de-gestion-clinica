@@ -34,10 +34,6 @@ public class FichaPage {
     driver.findElement(diagnosticoInput).sendKeys(diagnostico);
     driver.findElement(edadInput).sendKeys(edad);
     driver.findElement(tratamientoInput).sendKeys(tratamiento);
-  }
-
-  public void enviarFormulario() {
-    WebDriver driver = getDriver();
     driver.findElement(guardarButton).click();
   }
 
@@ -45,8 +41,8 @@ public class FichaPage {
     List<WebElement> message = getDriver().findElements(mensajeExitoso);
     return message.isEmpty() ? "" : message.get(0).getText().trim();
   }
-  
-  public String obtenerError() {
+
+  public String obtenerMensajeError() {
     List<WebElement> messageErrors = getDriver().findElements(mensajeError);
     return messageErrors.isEmpty() ? "" : messageErrors.get(0).getText().trim();
   }
