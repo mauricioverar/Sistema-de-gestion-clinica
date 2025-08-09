@@ -1,4 +1,3 @@
-```markdown
 # 🏥 Clínica Modular - Automatización de Pruebas
 
 Este proyecto automatiza pruebas funcionales para la aplicación web [Clínica Modular](https://clinica-modular.netlify.app/) utilizando **Selenium WebDriver**, **JUnit 5**, y **Cucumber** con enfoque **BDD**. Las pruebas validan el flujo de login y el registro de fichas clínicas, incluyendo reglas de negocio específicas.
@@ -19,7 +18,7 @@ src/
 ├── main/
 │   └── java/
 │       └── cl.clinica/
-
+|
 ├── test/
 │   └── java/
 │       └── cl.clinica/
@@ -74,6 +73,7 @@ Feature: Validación de reglas clínicas
     When deja el campo de tratamiento vacío
     Then ve un mensaje de error indicando que el tratamiento es obligatorio
 
+```
 
 ## 🧪 Escenarios Cubiertos
 
@@ -118,5 +118,4 @@ target/cucumber-report.html
 
 Desarrollado por Mauricio — especialista en automatización, diseño modular y pruebas escalables.
 
-```
 
