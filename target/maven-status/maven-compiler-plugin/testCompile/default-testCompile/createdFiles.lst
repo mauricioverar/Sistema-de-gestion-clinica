@@ -1,0 +1,7 @@
+cl\clinica\pages\LoginPage.class
+cl\clinica\pages\FichaPage.class
+cl\clinica\steps\FichaSteps.class
+cl\clinica\steps\LoginSteps.class
+cl\clinica\hooks\DriverHolder.class
+cl\clinica\RunCucumberTest.class
+cl\clinica\hooks\Hooks.class
