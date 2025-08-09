@@ -1,12 +1,12 @@
 @login
 Feature: Inicio de sesión de médico
 
-  Scenario: Validar login con credenciales válidas
+  Scenario Outline: Validar login con diferentes credenciales
     Given que el médico abre la página de login
-    When ingresa credenciales válidas
-    Then accede al registro de paciente
-    
-  Scenario: Validar mensaje de error con credenciales inválidas
-    Given que el médico abre la página de login
-    When ingresa credenciales inválidas
-    Then ve un mensaje de error de login
+    When ingresa el usuario "<usuario>" y la contraseña "<clave>"
+    Then <resultado>
+
+    Examples:
+      | usuario | clave     | resultado                                |
+      | doctor  | password  | accede al registro de paciente           |
+      | otro    | 123456    | ve un mensaje de error de login          |

@@ -16,10 +16,10 @@ LoginPage loginPage;
     loginPage.abrir();
   }
 
-  @When("ingresa credenciales válidas")
-  public void ingresa_credenciales_válidas() {
+  @When("ingresa el usuario {string} y la contraseña {string}")
+  public void ingresa_el_usuario_y_la_contraseña(String usuario, String clave) {
     loginPage = new LoginPage();
-    loginPage.login("doctor", "password");
+    loginPage.login(usuario, clave);
   }
 
   @Then("accede al registro de paciente")
